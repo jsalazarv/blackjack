@@ -1,0 +1,29 @@
+html, body {
+    background-color: #458262;
+}
+
+.divider {
+    border-top-color: #b1dfbb;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    margin-right: -70px;
+}
+
+.playing-card {
+    width: 120px;
+    left: 100px;
+    margin-left: -70px;
+}
+
+.btn-container {
+    align-items: center;
+    display: grid;
+    height: 80%;
+}
+
+.counter-container {
+    color: #b1dfbb;
+}

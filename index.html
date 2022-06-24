@@ -7,6 +7,45 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
+<div class="container">
+    <div class="row my-5 text-center">
+        <div class="col-12">
+            <img width="120" src="assets/images/blackjack-title.png" alt="blackjack">
+        </div>
+        <div class="col-12 my-3">
+            <hr class="divider">
+        </div>
+        <div class="col-12 col-md-5">
+            <div id="player" class="card-container">
+                <img class="playing-card" src="assets/images/cards/2C.png" alt="blackjack">
+                <img class="playing-card" src="assets/images/cards/2C.png" alt="blackjack">
+                <img class="playing-card" src="assets/images/cards/2C.png" alt="blackjack">
+                <img class="playing-card" src="assets/images/cards/2C.png" alt="blackjack">
+            </div>
+            <div class="counter-container player-counter mt-4">
+                <h5>Jugador: <span>0</span></h5>
+            </div>
+        </div>
+        <div class="col-12 col-md-2">
+            <div class="btn-container">
+                <button type="button" class="btn btn-success btn-sm btn-block">Nuevo juego</button>
+                <button type="button" class="btn btn-dark btn-sm btn-block">Pedir carta</button>
+                <button type="button" class="btn btn-danger btn-sm btn-block">Detener juego</button>
+            </div>
+        </div>
+        <div class="col-12 col-md-5">
+            <div id="computer" class="card-container">
+                <img class="playing-card" src="assets/images/cards/6H.png" alt="blackjack">
+                <img class="playing-card" src="assets/images/cards/6H.png" alt="blackjack">
+                <img class="playing-card" src="assets/images/cards/6H.png" alt="blackjack">
+                <img class="playing-card" src="assets/images/cards/6H.png" alt="blackjack">
+            </div>
+            <div class="counter-container computer-counter mt-4">
+                <h5>Computadora: <span>0</span></h5>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="assets/js/blackjack.js"></script>
 </body>

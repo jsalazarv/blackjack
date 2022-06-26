@@ -22,3 +22,14 @@ const createDeck = () => {
 }
 
 createDeck();
+
+
+const giveCard = () => {
+    const card = deck.pop();
+
+    if (deck.length === 0) {
+       throw "No hay cartas en el deck";
+    }
+
+    return card;
+}

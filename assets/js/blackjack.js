@@ -3,8 +3,10 @@ const suits = ["C", "D", "H", "S"]; // Clubs, Diamonds, Hearts, Spades (1 - 10)
 const courtCards = ["A", "J", "Q", "K"]; // Ace, Jack, Queen, King
 
 const giveCardBtn = document.querySelector('#give-card-btn');
+const stopGameBtn = document.querySelector('#stop-game-btn');
 const scores = document.querySelectorAll('span');
 const playerCardContainer = document.querySelector('#player-card-container');
+const computerCardContainer = document.querySelector('#computer-card-container');
 let playerScore = 0;
 let computerScore = 0;
 
@@ -48,6 +50,22 @@ const cardValue = (card) => {
         : (value * 1);
 }
 
+const computerGame = (minimumScore) => {
+    do {
+        const card = giveCard();
+        const cardImage = document.createElement('img');
+
+        computerScore = computerScore + cardValue(card);
+        scores[1].innerText = computerScore;
+
+        cardImage.src = `assets/images/cards/${card}.png`;
+        cardImage.classList.add('playing-card');
+        computerCardContainer.append(cardImage);
+
+        if(minimumScore < 21) break;
+    } while((computerScore < minimumScore) && (minimumScore <= 21))
+}
+
 giveCardBtn.addEventListener('click', () => {
    const card = giveCard();
    const cardImage = document.createElement('img');
@@ -61,9 +79,23 @@ giveCardBtn.addEventListener('click', () => {
 
    if(playerScore > 21) {
        giveCardBtn.disabled = true;
+       stopGameBtn.disabled = true;
+
        console.log("Perdiste");
+
+       computerGame(playerScore);
    } else if (playerScore === 21) {
        giveCardBtn.disabled = true;
+       stopGameBtn.disabled = true;
+
        console.log("21, Genial!");
+
+       computerGame(playerScore);
    }
+});
+
+stopGameBtn.addEventListener('click', () => {
+    giveCardBtn.disabled = true;
+    stopGameBtn.disabled = true;
+    computerGame(playerScore);
 });

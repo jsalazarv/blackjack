@@ -4,6 +4,7 @@ const courtCards = ["A", "J", "Q", "K"]; // Ace, Jack, Queen, King
 
 const giveCardBtn = document.querySelector('#give-card-btn');
 const stopGameBtn = document.querySelector('#stop-game-btn');
+const newGameBtn = document.querySelector('#new-game-btn');
 const scores = document.querySelectorAll('span');
 const playerCardContainer = document.querySelector('#player-card-container');
 const computerCardContainer = document.querySelector('#computer-card-container');
@@ -108,4 +109,17 @@ stopGameBtn.addEventListener('click', () => {
     giveCardBtn.disabled = true;
     stopGameBtn.disabled = true;
     computerGame(playerScore);
+});
+
+newGameBtn.addEventListener('click', () => {
+    deck = [];
+    deck = createDeck();
+    giveCardBtn.disabled = false;
+    stopGameBtn.disabled = false;
+    playerCardContainer.innerHTML = "";
+    computerCardContainer.innerHTML = "";
+    scores[0].innerText = "0";
+    scores[1].innerText = "0";
+    playerScore = 0;
+    computerScore = 0;
 });

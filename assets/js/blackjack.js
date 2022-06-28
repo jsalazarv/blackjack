@@ -4,6 +4,7 @@ const courtCards = ["A", "J", "Q", "K"]; // Ace, Jack, Queen, King
 
 const giveCardBtn = document.querySelector('#give-card-btn');
 const scores = document.querySelectorAll('span');
+const playerCardContainer = document.querySelector('#player-card-container');
 let playerScore = 0;
 let computerScore = 0;
 
@@ -49,7 +50,20 @@ const cardValue = (card) => {
 
 giveCardBtn.addEventListener('click', () => {
    const card = giveCard();
+   const cardImage = document.createElement('img');
 
    playerScore = playerScore + cardValue(card);
    scores[0].innerText = playerScore;
+
+   cardImage.src = `assets/images/cards/${card}.png`;
+   cardImage.classList.add('playing-card');
+   playerCardContainer.append(cardImage);
+
+   if(playerScore > 21) {
+       giveCardBtn.disabled = true;
+       console.log("Perdiste");
+   } else if (playerScore === 21) {
+       giveCardBtn.disabled = true;
+       console.log("21, Genial!");
+   }
 });

@@ -63,7 +63,21 @@ const computerGame = (minimumScore) => {
         computerCardContainer.append(cardImage);
 
         if(minimumScore < 21) break;
-    } while((computerScore < minimumScore) && (minimumScore <= 21))
+    } while((computerScore < minimumScore) && (minimumScore <= 21));
+
+    setTimeout(() => {
+        if(computerScore === minimumScore) {
+            alert("Nadie gana :(");
+        }else if (minimumScore > 21) {
+            alert("La computadora gana");
+        } else if (computerScore < 21){
+            alert("Jugador gana");
+        } else if(minimumScore === 21 && computerScore !== 21) {
+            alert("Jugador gana");
+        } else {
+            alert("La computadora gana");
+        }
+    }, 10);
 }
 
 giveCardBtn.addEventListener('click', () => {
@@ -81,14 +95,10 @@ giveCardBtn.addEventListener('click', () => {
        giveCardBtn.disabled = true;
        stopGameBtn.disabled = true;
 
-       console.log("Perdiste");
-
        computerGame(playerScore);
    } else if (playerScore === 21) {
        giveCardBtn.disabled = true;
        stopGameBtn.disabled = true;
-
-       console.log("21, Genial!");
 
        computerGame(playerScore);
    }

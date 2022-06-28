@@ -2,6 +2,11 @@ let deck = [];
 const suits = ["C", "D", "H", "S"]; // Clubs, Diamonds, Hearts, Spades (1 - 10)
 const courtCards = ["A", "J", "Q", "K"]; // Ace, Jack, Queen, King
 
+const giveCardBtn = document.querySelector('#give-card-btn');
+const scores = document.querySelectorAll('span');
+let playerScore = 0;
+let computerScore = 0;
+
 
 const createDeck = () => {
     for(let number = 2; number <= 10; number ++) {
@@ -42,4 +47,9 @@ const cardValue = (card) => {
         : (value * 1);
 }
 
-cardValue(giveCard());
+giveCardBtn.addEventListener('click', () => {
+   const card = giveCard();
+
+   playerScore = playerScore + cardValue(card);
+   scores[0].innerText = playerScore;
+});

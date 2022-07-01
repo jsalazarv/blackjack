@@ -23,9 +23,9 @@
         </div>
         <div class="col-12 col-md-2">
             <div class="btn-container">
-                <button id="new-game-btn" type="button" class="btn btn-success btn-sm btn-block">Nuevo juego</button>
-                <button id="give-card-btn" type="button" class="btn btn-dark btn-sm btn-block">Pedir carta</button>
-                <button id="stop-game-btn" type="button" class="btn btn-danger btn-sm btn-block">Detener juego</button>
+                <button id="new-game-btn" class="btn btn-success btn-sm btn-block">Nuevo juego</button>
+                <button id="give-card-btn" disabled="disabled" class="btn btn-dark btn-sm btn-block">Pedir carta</button>
+                <button id="stop-game-btn" disabled="disabled" class="btn btn-danger btn-sm btn-block">Detener juego</button>
             </div>
         </div>
         <div class="col-12 col-md-5">
@@ -39,5 +39,8 @@
 
 <script src="assets/js/packages/underscore.js"></script>
 <script src="assets/js/blackjack.js"></script>
+<script>
+    blackJack.startGame();
+</script>
 </body>
 </html>

@@ -28,3 +28,11 @@ html, body {
 .counter-container {
     color: #b1dfbb;
 }
+
+.footer {
+    color: #b1dfbb;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-family: 'BeyondTheMountains', serif;
+}

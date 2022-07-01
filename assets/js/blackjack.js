@@ -7,8 +7,10 @@ const blackJack =  (() => {
     const giveCardBtn = document.querySelector('#give-card-btn');
     const stopGameBtn = document.querySelector('#stop-game-btn');
     const newGameBtn = document.querySelector('#new-game-btn');
-    const scores = document.querySelectorAll('span');
+    const scores = document.querySelectorAll('.counter');
     const cardContainer = document.querySelectorAll('.card-container');
+    const scoreboards = document.querySelectorAll('.counter-container h5');
+    const PLAYERS = {player: 'player', computer: 'computer'};
     let playersScore = [];
 
     const initializeGame = (numberOfPlayers = 2) => {
@@ -20,9 +22,20 @@ const blackJack =  (() => {
         }
 
         scores.forEach(element => element.innerText = '0');
-        cardContainer.forEach(element => element.innerHTML = '')
+        cardContainer.forEach(element => element.innerHTML = '');
+
+        scoreboards.forEach(element => element.classList.add('d-block'));
+
         giveCardBtn.disabled = false;
         stopGameBtn.disabled = false;
+
+        giveCardBtn.classList.add('d-block');
+        stopGameBtn.classList.add('d-block');
+    }
+
+    const hideItems = () => {
+        giveCardBtn.classList.remove('d-block');
+        stopGameBtn.classList.remove('d-block');
     }
 
 
@@ -74,27 +87,45 @@ const blackJack =  (() => {
         cardContainer[turn].append(cardImage);
     }
 
-    const determineWinner = () => {
+    const checkScore = (playerScore, computerScore) => {
+
+        if(playerScore > 21) {
+            return PLAYERS.computer;
+        }
+
+        if(computerScore > 21) {
+            return PLAYERS.player;
+        }
+
+        if(playerScore > computerScore) {
+            return PLAYERS.player;
+        }
+
+        if(playerScore < computerScore) {
+            return PLAYERS.computer;
+        }
+
+        return null;
+    }
+
+    const displayMessages = () => {
         const [playerScore, computerScore] = playersScore;
+        let winner = checkScore(playerScore, computerScore);
 
+        if (winner === PLAYERS.computer) {
+            return alert("Computadora gana");
+        }
 
-        setTimeout(() => {
-            if(computerScore === playerScore) {
-                alert("Nadie gana :(");
-            } else if (playerScore > 21) {
-                alert("La computadora gana");
-            } else if (computerScore < 21){
-                alert("Jugador gana");
-            } else if(playerScore === 21 && computerScore !== 21) {
-                alert("Jugador gana");
-            } else if(playerScore <= 21 && computerScore > 21) {
-                alert("Jugador gana");
-            } else if(playerScore < computerScore && computerScore <= 21) {
-                alert("La computadora gana");
-            } else {
-                alert("La computadora gana");
-            }
-        }, 10);
+        if (winner === PLAYERS.player) {
+            confettii();
+            return alert("Jugador gana");
+        }
+
+        return alert("Empate");
+    }
+
+    const finishGame = () => {
+        setTimeout(displayMessages, 10);
     }
 
     const computerGame = (minimumScore) => {
@@ -107,7 +138,7 @@ const blackJack =  (() => {
             renderCard(card, playersScore.length -1);
         } while((computerScore < minimumScore) && (minimumScore <= 21));
 
-        determineWinner();
+        finishGame();
     }
 
     giveCardBtn.addEventListener('click', () => {
@@ -142,6 +173,7 @@ const blackJack =  (() => {
     });
 
     return {
+        checkScore,
         startGame: initializeGame
     };
 })();

@@ -12,3 +12,13 @@ The implemented technologies are shown below:
 - CSS3 and [Bootstrap](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
 - [Underscore.js](https://underscorejs.org/)
 - [Canvas Confetti](https://www.kirilv.com/canvas-confetti/)
+
+
+
+### Installation
+
+To see this example you must clone the project with the following command:
+
+```bash
+$ git clone https://github.com/jsalazarv/blackjack.git
+```

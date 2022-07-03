@@ -1,0 +1,64 @@
+html, body {
+    background-color: #458262;
+}
+
+.divider {
+    border-top-color: #b1dfbb;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    margin-right: -70px;
+    min-height: 190px;
+}
+
+.playing-card {
+    width: 120px;
+    left: 100px;
+    margin-left: -70px;
+}
+
+.btn-container {
+    align-items: center;
+    display: grid;
+    height: 80%;
+}
+
+.counter-container {
+    color: #b1dfbb;
+}
+
+.footer {
+    color: #b1dfbb;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-family: 'BeyondTheMountains', serif;
+}
+
+
+.blackjack {
+    width: 120px;
+}
+
+.logo {
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    position: relative;
+    transform: scale(2.5) translateY(100px);
+    z-index: 9999;
+}
+
+.game-over {
+    color: #b1dfbb;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    transform: translateY(-50px);
+    z-index: 2;
+    font-weight: bold;
+}

@@ -12,7 +12,10 @@
     <div class="container">
         <div class="row my-5 text-center">
             <div class="col-12">
-                <img width="120" src="assets/images/blackjack-title.png" alt="blackjack">
+                <div>
+                    <img class="blackjack" src="assets/images/blackjack-title.png" alt="blackjack">
+                    <h1 class="game-over-message"></h1>
+                </div>
             </div>
             <div class="col-12 my-3">
                 <hr class="divider">
@@ -36,6 +39,9 @@
                 </div>
                 <div id="computer-card-container" class="card-container"></div>
             </div>
+            <div class="col-12">
+                <button id="reload-game" class="btn btn-success btn-sm d-none">Volver a jugar</button>
+            </div>
         </div>
     </div>
     <div class="footer text-center">
@@ -51,11 +57,5 @@
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 <script src="assets/js/packages/confetti.js"></script>
 <script src="assets/js/blackjack.js"></script>
-<script>
-    console.log(blackJack.checkScore(22, 12));
-    console.log(blackJack.checkScore(18, 22));
-    console.log(blackJack.checkScore(18, 14));
-    console.log(blackJack.checkScore(13, 13));
-</script>
 </body>
 </html>

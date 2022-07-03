@@ -3,13 +3,15 @@ const blackJack =  (() => {
     let deck = [];
     const suits = ["C", "D", "H", "S"]; // Clubs, Diamonds, Hearts, Spades (1 - 10)
     const courtCards = ["A", "J", "Q", "K"]; // Ace, Jack, Queen, King
-
     const giveCardBtn = document.querySelector('#give-card-btn');
     const stopGameBtn = document.querySelector('#stop-game-btn');
     const newGameBtn = document.querySelector('#new-game-btn');
+    const reloadGameBtn = document.querySelector('#reload-game');
+    const gameOverMessage = document.querySelector('.game-over-message');
     const scores = document.querySelectorAll('.counter');
     const cardContainer = document.querySelectorAll('.card-container');
     const scoreboards = document.querySelectorAll('.counter-container h5');
+    const logo = document.querySelector('.blackjack');
     const PLAYERS = {player: 'player', computer: 'computer'};
     let playersScore = [];
 
@@ -31,11 +33,6 @@ const blackJack =  (() => {
 
         giveCardBtn.classList.add('d-block');
         stopGameBtn.classList.add('d-block');
-    }
-
-    const hideItems = () => {
-        giveCardBtn.classList.remove('d-block');
-        stopGameBtn.classList.remove('d-block');
     }
 
 
@@ -108,20 +105,29 @@ const blackJack =  (() => {
         return null;
     }
 
+    const reverseAnimations = () => {
+        logo.classList.add('logo');
+        gameOverMessage.classList.add('game-over');
+        reloadGameBtn.classList.remove('d-none');
+    }
+
     const displayMessages = () => {
         const [playerScore, computerScore] = playersScore;
         let winner = checkScore(playerScore, computerScore);
 
         if (winner === PLAYERS.computer) {
-            return alert("Computadora gana");
+            reverseAnimations();
+            return gameOverMessage.innerText = "¡PERDISTE!";
         }
 
         if (winner === PLAYERS.player) {
             confettii();
-            return alert("Jugador gana");
+            reverseAnimations();
+            return gameOverMessage.innerText = "¡GANASTE!";
         }
 
-        return alert("Empate");
+        reverseAnimations();
+        return gameOverMessage.innerText = "¡EMPATE!";
     }
 
     const finishGame = () => {
@@ -171,6 +177,14 @@ const blackJack =  (() => {
     newGameBtn.addEventListener('click', () => {
         initializeGame();
     });
+
+    reloadGameBtn.addEventListener('click', () => {
+        reloadGameBtn.classList.add('d-none');
+        gameOverMessage.classList.remove('game-over');
+        gameOverMessage.innerText = "";
+        logo.classList.remove('logo');
+        initializeGame();
+    })
 
     return {
         checkScore,
